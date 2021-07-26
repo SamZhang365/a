@@ -2,7 +2,7 @@
     <h2>自定义hook函数操作</h2>
     <h2>x:{{ x }},y:{{ y }}</h2>
     <h3 v-if="loading">正在加载中...</h3>
-    <h3 v-else-if="errorMsg">错误信息：{{ errorMsg }}</h3>//两个errorMsg不懂
+    <h3 v-else-if="errorMsg">错误信息：{{ errorMsg }}</h3>
     <ul v-else>
         <li>id:{{ data.id }}</li>
         <li>address:{{ data.address }}</li>
@@ -48,7 +48,7 @@
             //监视
             watch(data, () => {
                 if (data.value) {
-                    console.log(data.value.length);//不懂
+                    console.log(data.value.length);//length属性只有数组才有？
                 }
             })
 
