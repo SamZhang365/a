@@ -15,7 +15,7 @@ export default function <T>(url: string) {
     }).catch(Error => {
         //    失败时改变加载状态
         loading.value = false;
-        errorMsg.value = Error.message || '未知错误';
+        errorMsg.value = Error.message || '未知错误';//不懂，为什么字符串可以或
     })
     return {
         loading,

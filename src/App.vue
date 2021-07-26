@@ -2,7 +2,7 @@
     <h2>自定义hook函数操作</h2>
     <h2>x:{{ x }},y:{{ y }}</h2>
     <h3 v-if="loading">正在加载中...</h3>
-    <h3 v-else-if="errorMsg">错误信息：{{ errorMsg }}</h3>
+    <h3 v-else-if="errorMsg">错误信息：{{ errorMsg }}</h3>//两个errorMsg不懂
     <ul v-else>
         <li>id:{{ data.id }}</li>
         <li>address:{{ data.address }}</li>
@@ -10,7 +10,7 @@
     </ul>
     <hr>
     <!--    数组数据-->
-    <!--    :key="item.id"为每项提供一个独一无二的key, : 是v-bind的缩写-->
+    <!--    :key="item.id"为每项提供一个独一无二的key, : 是v-bind的缩写   -->
     <ul v-for="item in data" :key="item.id">
         <li>id:{{ item.id }}</li>
         <li>title:{{ item.title }}</li>
