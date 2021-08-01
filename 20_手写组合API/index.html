@@ -1,0 +1,106 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>123456</title>
+</head>
+<body>
+<script src="index.js"></script>
+<script type="text/javascript">
+    const proxyUser1 = shallowReactive({
+        name: '小明',
+        car: {
+            color: 'red',
+        }
+    })
+    //拦截到了读和写的数据
+    // proxyUser1.name += '小红';
+    //拦截到了读的数据，拦截不到写的数据
+    // proxyUser1.car.color+='==';
+    //拦截到了删除数据
+    // delete proxyUser1.name;
+    //拦截到了读，但拦截不到删除
+    // delete  proxyUser1.car.color;
+
+    const proxyUser2 = reactive({
+        name: '小明',
+        car: {
+            color: 'red',
+        }
+    })
+    //拦截到了读和写的数据
+    // proxyUser2.name += '小红';
+    //拦截到了读的数据，拦截到了写的数据
+    // proxyUser2.car.color+='==';
+    //拦截到了删除数据
+    // delete proxyUser2.name;
+    //拦截到了读，但拦截到了删除
+    // delete  proxyUser2.car.color;
+
+
+    //============================
+    //    测试shallowReadonly和readonly
+    const proxyUser3 = shallowReadonly({
+        name: '小明',
+        car: ['奔驰', '宝马'],
+    })
+    //可以读取
+    // console.log(proxyUser3.name);
+    //不能修改
+    // proxyUser3.name = '===';
+    //不能删除
+    // delete proxyUser3.name;
+    //拦截到了读取，拦截不了深度的修改，可以修改
+    // proxyUser3.car[0] = '奥迪';
+    //拦截到了读取，拦截不了深度的删除，可以删除
+    // delete proxyUser3.car[0];
+
+    const proxyUser4 = readonly({
+        name: '小明',
+        car: ['奔驰', '宝马'],
+    })
+    //拦截到了读取
+    // console.log(proxyUser4.name);
+    // console.log(proxyUser4.car[0]);
+    //    只读的
+    //     proxyUser4.name='哈哈哈';
+    //     proxyUser4.car[0]='自行车';
+    //     delete  proxyUser4.name;
+    //     delete proxyUser4.car[0];
+
+    const ref1 = shallowRef({
+        name: '小明',
+        car: {
+            color: 'red',
+        }
+    })
+    //可以劫持到读取数据
+    // console.log(ref1.value);
+    //可以劫持到修改数据
+    // ref1.value = '===';
+    //只能劫持到读取数据，劫持不到修改，因为是浅的
+    // ref1.value.car = '---';
+
+    const ref2 = ref({
+        name: '小明',
+        car: {
+            color: 'red',
+        }
+    })
+    //可以劫持到读取数据
+    // console.log(ref2.value);
+    //可以劫持到修改数据
+    // ref2.value='===';
+    //可以劫持到，先劫持到读取，再劫持到修改。
+    // ref2.value.car = '---';
+
+    console.log(isRef(ref({})));
+    console.log(isReactive(reactive({})));
+    console.log(isReadonly(readonly({})));
+    console.log(isProxy(reactive({})));
+    console.log(isProxy(readonly({})));
+
+</script>
+
+</body>
+
+</html>

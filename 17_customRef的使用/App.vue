@@ -18,7 +18,7 @@ function useDebouncedRef<T>(value: T, delay = 200) {
     return{
       //返回数据
       get() {
-        //  告诉vue追踪数据
+        //  告诉vue追踪数据value
         track();
         return value;
       },
@@ -28,9 +28,9 @@ function useDebouncedRef<T>(value: T, delay = 200) {
         clearTimeout(timeOutId);
         //开启定时器
         timeOutId = setTimeout(() => {
-          value = newValue
-          //告诉vue更新界面
-          trigger()
+          value = newValue;
+          //告诉vue数据被修改时，更新界面
+          trigger();
         }, delay);
       }
     }
