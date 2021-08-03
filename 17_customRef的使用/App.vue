@@ -27,11 +27,11 @@ function useDebouncedRef<T>(value: T, delay = 200) {
         //清理定时器
         clearTimeout(timeOutId);
         //开启定时器
-        timeOutId = setTimeout(() => {
-          value = newValue;
-          //告诉vue数据被修改时，更新界面
-          trigger();
-        }, delay);
+        // timeOutId = setTimeout(() => {
+        //   value = newValue;
+        //   //告诉vue数据被修改时，更新界面
+        //   trigger();
+        // }, delay);
       }
     }
   })
